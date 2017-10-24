@@ -1,3 +1,8 @@
+@font-face {
+    font-family: rawengulk-sans;
+    src: url(/fonts/rawengulksans.otf);
+}
+
 body {
     width: 99%;
     background-color: black !important;
@@ -69,6 +74,7 @@ div {
 }
 
 .btn {
+	font-family: rawengulk-sans;
 	font-size: xx-large !important;
 	background: black;
 	color: white;
