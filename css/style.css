@@ -70,8 +70,8 @@ div {
 
 .btn {
 	font-size: xx-large !important;
-	background: white;
-	color: black;
+	background: black;
+	color: white;
 	width: 98%;
 	margin: 1%
 }
