@@ -1,0 +1,18 @@
+<html>
+	<head>
+		 <link rel="stylesheet" type="text/css" href="/css/style.css">
+		 <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+	</head>
+	<body>
+   
+		<form action = "http://{{ ip }}:{{ port }}/upload" method = "POST" 
+			enctype = "multipart/form-data">
+			<div class="fileUpload btn">
+				<span>Upload</span>
+				<input class="upload btn" type = "file" name = "file" />
+			</div>
+			<input class="btn" type = "submit"/>
+		</form>
+      
+	</body>
+</html>
