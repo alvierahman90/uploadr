@@ -9,10 +9,17 @@
 			enctype = "multipart/form-data">
 			<div class="fileUpload btn">
 				<span>Upload</span>
-				<input class="upload btn" type = "file" name = "file" />
+				<input id="uploadBtn" class="upload btn" type="file" name="file" />
 			</div>
+			<p id="uploadFile"></p>
 			<input class="btn" type = "submit"/>
 		</form>
+	<script>
+document.getElementById("uploadBtn").onchange = function () {
+	filename = document.getElementById('uploadBtn').value.split('C:\\fakepath\\')[1];
+	document.getElementById("uploadFile").innerHTML= filename;
+};
+	</script>
       
 	</body>
 </html>
