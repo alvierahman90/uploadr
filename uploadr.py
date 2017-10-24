@@ -47,5 +47,6 @@ def css(filename=None):
 def fonts(filename=None):
     return flask.send_from_directory('fonts', filename)
 
-app.debug = True
-app.run()
+if __name__ == '__main__':
+    app.debug = True
+    app.run()
