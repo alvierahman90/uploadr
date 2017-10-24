@@ -1,15 +1,17 @@
 import time
 import flask
+import config
 from flask import Flask
 from flask import render_template
 from flask import request
 from flask import send_from_directory
 from werkzeug.utils import secure_filename
-
 app = Flask(__name__)
 
-port = 8080
-ip =  "192.168.1.80"
+@app.route("/")
+@app.route("/hello/<name>")
+def hello(name=None):
+    return render_template('hello.html',name=name)
 
 @app.route('/upload', methods=['GET','POST'])
 def upload_file():
@@ -18,9 +20,14 @@ def upload_file():
         print(secure_filename(f.filename))
         filename = str(time.time()) + '.' + secure_filename(f.filename).split('.')[-1]
         f.save('./uploads/' + filename)
-        return render_template('upload_success.html', filename = filename, port = port, ip = ip)
+        return render_template('upload_success.html', 
+                filename = filename, 
+                port = config.port, 
+                )
     else:
-        return render_template('upload.html', port = port, ip = ip)
+        return render_template('upload.html', 
+                port = config.port, 
+                )
 
 @app.route('/download/<filename>')
 def download(filename=None):
