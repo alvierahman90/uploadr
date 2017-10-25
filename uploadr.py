@@ -1,12 +1,14 @@
 import time
 import flask
 import config
+import os
 from flask import Flask
 from flask import render_template
 from flask import request
 from flask import send_from_directory
 from werkzeug.utils import secure_filename
 app = Flask(__name__)
+app.config['SECRET_KEY'] = os.urandom(24)
 
 @app.route("/")
 @app.route("/hello/<name>")
@@ -20,13 +22,13 @@ def upload_file():
         print(secure_filename(f.filename))
         filename = str(time.time()) + '.' + secure_filename(f.filename).split('.')[-1]
         f.save('./uploads/' + filename)
-        return render_template('upload_success.html', 
-                filename = filename, 
-                port = config.port, 
+        return render_template('upload_success.html',
+                filename = filename,
+                port = config.port,
                 )
     else:
-        return render_template('upload.html', 
-                port = config.port, 
+        return render_template('upload.html',
+                port = config.port,
                 )
 
 @app.route('/download/<filename>')
@@ -44,3 +46,7 @@ def css(filename=None):
 @app.route('/fonts/<filename>')
 def fonts(filename=None):
     return flask.send_from_directory('fonts', filename)
+
+if __name__ == '__main__':
+    app.debug = True
+    app.run()
