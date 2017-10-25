@@ -12,10 +12,6 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = os.urandom(24)
 
 @app.route("/")
-@app.route("/hello/<name>")
-def hello(name=None):
-    return render_template('hello.html',name=name)
-
 @app.route('/upload', methods=['GET','POST'])
 def upload_file():
     if request.method == 'POST':
