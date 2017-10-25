@@ -8,6 +8,8 @@ gunicorn. Here is an example below:
 class uploadr:
 	domain = "example.com"
 	port = 8005
+	uploads = '/home/dannydevito/uploads' # folder where uploaded files will be stored
+	qrcodes = '/home/dannydevito/qrcodes' # folder where generated qr codes will be stored
 
 # gunicorn
 bind = "0.0.0.0:" + uploadr.port

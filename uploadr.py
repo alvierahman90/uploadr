@@ -44,7 +44,7 @@ def qrcodes(filename):
     image = qrcode.make(link)
     with open('qrcodes/' + filename+ '.png', mode = 'bw+') as file:
         image.save(file)
-    return send_from_directory('qrcodes', filename + '.png', as_attachment=True)
+    return send_from_directory(config.qrcodes, filename + '.png', as_attachment=True)
 
 @app.route('/qr/<filename>')
 def qr(filename=None):
@@ -58,7 +58,7 @@ def qr(filename=None):
 @app.route('/download/<filename>')
 def download(filename=None):
     if filename != None:
-        return flask.send_from_directory('uploads', filename, as_attachment=True)
+        return flask.send_from_directory(config.uploads, filename, as_attachment=True)
     else:
         return hello()
 
