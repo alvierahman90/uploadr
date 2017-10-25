@@ -11,6 +11,12 @@ from werkzeug.utils import secure_filename
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.urandom(24)
 
+if not os.path.isdir(config.uploads):
+    os.makedirs(config.uploads)
+
+if not os.path.isdir(config.qrcodes):
+    os.makedirs(config.qrcodes)
+
 @app.route("/")
 @app.route('/upload', methods=['GET','POST'])
 def upload_file():
