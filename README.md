@@ -13,6 +13,7 @@ class uploadr:
 bind = "0.0.0.0:" + uploadr.port
 ```
 
+You also need to create the directories `qrcodes` and `uploads` (in your working directory).
 ## dependencies
 uploadr uses the following modules:
  - `flask`
