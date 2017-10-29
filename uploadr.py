@@ -27,7 +27,6 @@ check_create(config.qrcodes)
 def upload_file():
     if request.method == 'POST':
         f = request.files['file']
-        print(secure_filename(f.filename))
         filename = secure_filename(f.filename)
         time_uploaded = str(time.time())
         file_dir = config.uploads + '/' + filename
@@ -75,17 +74,11 @@ def download(filename=None):
     provided_version = request.args.get('version')
     directory_base = config.uploads + '/' + filename + '/'
     directory = directory_base + str(provided_version)
-    print(directory)
-    print(os.path.isdir(directory))
     if not os.path.isdir(directory):
         existing_versions = glob.glob(directory_base + '*')
-        print(existing_versions)
         existing_versions.sort()
-        print(existing_versions)
         latest_version = existing_versions[-1]
-        print(latest_version)
         directory = latest_version 
-        print(directory)
 
     return flask.send_from_directory(directory, decode(filename), as_attachment=True)
 
