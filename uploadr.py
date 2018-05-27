@@ -56,7 +56,7 @@ def qrcodes(filename):
             , request.args.get('version')
             )
     image = qrcode.make(link)
-    with open('qrcodes/' + filename+ '.png', mode = 'bw+') as file:
+    with open(config.qrcodes + '/' + filename+ '.png', mode = 'bw+') as file:
         image.save(file)
     return send_from_directory(config.qrcodes, filename + '.png', as_attachment=True)
 
