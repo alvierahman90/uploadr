@@ -5,4 +5,4 @@ class uploadr:
 	qrcodes = './qrcodes' # qr codes will be stored
 
 # gunicorn
-bind = "0.0.0.0:" + uploadr.port
+bind = "0.0.0.0:" + str(uploadr.port)
